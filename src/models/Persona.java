@@ -5,10 +5,10 @@ import java.util.Random;
 public class Persona {
     private String nombre = "";
     private int edad = 0;
-    private String dni = "";
+    private String dni = generarDNI();
     private char sexo = 'H';
-    private int peso = 0;
-    private double altura = 0;
+    private int peso = 0; //En Kg.
+    private double altura = 0; //En Mts.
 
 
     public Persona() {
@@ -19,14 +19,59 @@ public class Persona {
         this.nombre = nombre;
         this.edad = edad;
         this.sexo = comprobarSexo(sexo);
+        this.dni = generarDNI();
     }
 
-    public Persona(String nombre, int edad, String dni, char sexo, int peso, double altura) {
+    public Persona(String nombre, int edad, char sexo, int peso, double altura) {
         this.nombre = nombre;
         this.edad = edad;
-        this.dni = dni;
         this.sexo = comprobarSexo(sexo);
+        this.dni = generarDNI();
         this.peso = peso;
+        this.altura = altura;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public char getSexo() {
+        return sexo;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = comprobarSexo(sexo);
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
+    public void setAltura(double altura) {
         this.altura = altura;
     }
 
@@ -46,7 +91,7 @@ public class Persona {
     }
 
     private char comprobarSexo(char sexo){
-        if(sexo != 'H'){
+        if(sexo != 'H' && sexo != 'M'){
             return 'H';
         }else return sexo;
     }
@@ -63,13 +108,10 @@ public class Persona {
                 '}';
     }
 
-    //Investigar como generar una letra aleatoria y lo mismo para numeros para el DNI
-    public void generarLetra(){
-        Random random = new Random();
-        char valorMin = 'F';
-        char valorMax = 'M';
-        int numeroAleatorio = random.nextInt(valorMax - valorMin + 1);
-        char letraAleatoria = (char) numeroAleatorio;
-        System.out.print(letraAleatoria);
+    public String generarDNI(){
+        int numero = (int) (Math.random()*45000000 + 4000000);
+        String dni = sexo + Integer.toString(numero);
+        return dni;
     }
+
 }
