@@ -1,6 +1,6 @@
 package models;
 
-public class Serie {
+public class Serie implements Entrega{
     private String titulo;
     private int nroTemporadas = 3;
     private boolean entregado = false;
@@ -63,5 +63,19 @@ public class Serie {
                 ", Género = '" + genero + '\'' +
                 ", Creador = '" + creador + '\'' +
                 '}';
+    }
+
+    public void entregar(){
+        entregado = true;
+    }
+    public void devolver(){
+        entregado = false;
+    }
+    public boolean isEntregado(){
+        return entregado;
+    }
+    public int compareTo(Serie s) {
+        int result = Integer.compare(getNroTemporadas(), s.getNroTemporadas());
+        return result;
     }
 }

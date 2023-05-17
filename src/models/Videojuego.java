@@ -1,6 +1,8 @@
 package models;
 
-public class Videojuego {
+import java.util.Objects;
+
+public class Videojuego implements Entrega{
     private String titulo;
     private int horasEstimadas = 10;
     private boolean entregado = false;
@@ -63,5 +65,32 @@ public class Videojuego {
                 ", Género = '" + genero + '\'' +
                 ", Compañía = '" + compania + '\'' +
                 '}';
+    }
+
+    public void entregar(){
+        entregado = true;
+    }
+    public void devolver(){
+        entregado = false;
+    }
+    public boolean isEntregado(){
+        return entregado;
+    }
+    public int compareTo(Videojuego v) {
+        int result = Integer.compare(getHorasEstimadas(), v.getHorasEstimadas());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Videojuego)) return false;
+        Videojuego that = (Videojuego) o;
+        return horasEstimadas == that.horasEstimadas && titulo == that.titulo && genero == that.genero && compania == that.compania;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titulo, horasEstimadas, genero, compania);
     }
 }

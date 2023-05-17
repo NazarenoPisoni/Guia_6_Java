@@ -1,5 +1,7 @@
 import models.Password;
 import models.Persona;
+import models.Serie;
+import models.Videojuego;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,5 +54,19 @@ public class Main {
 //            fuertes[i] = passwords[i].esFuerte(passwords[i].getContrasenia());
 //            passwords[i].mostrarPassword();
 //        }
+
+        Videojuego[] juegos = new Videojuego[5];
+        Serie[] series = new Serie[5];
+        juegos[0] = new Videojuego("God of War", 30, "Accion", "Sony");
+        juegos[1] = new Videojuego("Bioshock", 25, "Shooter", "Sony");
+        juegos[2] = new Videojuego("FIFA 23", 99);
+        juegos[3] = new Videojuego("Resident Evil 4", 40);
+        juegos[4] = new Videojuego("Call of Duty Modern Warfare", 35);
+        series[0] = new Serie("Breaking Bad", "Vince Gilligan");
+        series[1] = new Serie("Better Call Saul", "Vince Gilligan");
+        series[2] = new Serie("Ozark", 3, "Accion", "Juan Perez");
+        series[3] = new Serie("Fargo", 3, "Accion", "Fulano");
+        series[4] = new Serie("Dark", 3, "Accion/Suspenso", "Baran Bo Odar");
+
     }
 }
