@@ -61,9 +61,6 @@ public class Password {
 
     public void mostrarPassword(){
         System.out.println("La contraseña es " + getContrasenia());
-        if(esFuerte(getContrasenia()) == true){
-            System.out.println("La contraseña es fuerte");
-        }else System.out.println("La contraseña NO es fuerte");
     }
 
 }

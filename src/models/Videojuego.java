@@ -3,11 +3,11 @@ package models;
 import java.util.Objects;
 
 public class Videojuego implements Entrega{
-    private String titulo;
-    private int horasEstimadas = 10;
+    private String titulo = "";
+    private int horasEstimadas = 0;
     private boolean entregado = false;
-    private String genero;
-    private String compania;
+    private String genero = "";
+    private String compania = "";
 
     public Videojuego() {
     }
@@ -76,7 +76,8 @@ public class Videojuego implements Entrega{
     public boolean isEntregado(){
         return entregado;
     }
-    public int compareTo(Videojuego v) {
+    public int compareTo(Object a) {
+        Videojuego v = (Videojuego) a;
         int result = Integer.compare(getHorasEstimadas(), v.getHorasEstimadas());
         return result;
     }
@@ -86,11 +87,12 @@ public class Videojuego implements Entrega{
         if (this == o) return true;
         if (!(o instanceof Videojuego)) return false;
         Videojuego that = (Videojuego) o;
-        return horasEstimadas == that.horasEstimadas && titulo == that.titulo && genero == that.genero && compania == that.compania;
+        return titulo == that.titulo;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(titulo, horasEstimadas, genero, compania);
     }
+
 }

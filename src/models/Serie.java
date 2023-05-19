@@ -1,11 +1,13 @@
 package models;
 
+import java.util.Objects;
+
 public class Serie implements Entrega{
-    private String titulo;
-    private int nroTemporadas = 3;
+    private String titulo = "";
+    private int nroTemporadas = 1;
     private boolean entregado = false;
-    private String genero;
-    private String creador;
+    private String genero = "";
+    private String creador = "";
 
     public Serie() {
     }
@@ -74,8 +76,22 @@ public class Serie implements Entrega{
     public boolean isEntregado(){
         return entregado;
     }
-    public int compareTo(Serie s) {
+    public int compareTo(Object a) {
+        Serie s = (Serie) a;
         int result = Integer.compare(getNroTemporadas(), s.getNroTemporadas());
         return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Serie)) return false;
+        Serie serie = (Serie) o;
+        return titulo == serie.titulo;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titulo, nroTemporadas, genero, creador);
     }
 }

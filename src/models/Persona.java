@@ -6,7 +6,9 @@ public class Persona {
     private String nombre = "";
     private int edad = 0;
     private String dni = generarDNI();
-    private char sexo = 'H';
+    private final char HOMBRE = 'H';
+    private final char MUJER = 'M';
+    private char sexo = HOMBRE;
     private int peso = 0; //En Kg.
     private double altura = 0; //En Mts.
 
@@ -91,8 +93,8 @@ public class Persona {
     }
 
     private char comprobarSexo(char sexo){
-        if(sexo != 'H' && sexo != 'M'){
-            return 'H';
+        if(sexo != HOMBRE && sexo != MUJER){
+            return HOMBRE;
         }else return sexo;
     }
 
@@ -108,7 +110,7 @@ public class Persona {
                 '}';
     }
 
-    public String generarDNI(){
+    private String generarDNI(){
         int numero = (int) (Math.random()*45000000 + 4000000);
         String dni = sexo + Integer.toString(numero);
         return dni;
